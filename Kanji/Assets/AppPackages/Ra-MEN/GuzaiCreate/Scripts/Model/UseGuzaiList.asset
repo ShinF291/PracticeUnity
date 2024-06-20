@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310788779edda6644951b212580d6d7f, type: 3}
+  m_Name: UseGuzaiList
+  m_EditorClassIdentifier: 
+  UseGuzaiPrehab:
+  - {fileID: 1454272023107749381, guid: 242fe0f10022165408ca8548621a71ae, type: 3}
+  - {fileID: 4875960422709227863, guid: 2c9c1394b2131a542b794ecefa60717c, type: 3}
+  - {fileID: 8940712890338046403, guid: d97e0f74031b3d148a0b022a976d505c, type: 3}
+  - {fileID: 7664546489983874587, guid: 1d60232ea2273c14e99c7edff4dc9589, type: 3}
+  - {fileID: 4247133079724848797, guid: a7be5f7c138301f409f54c8eb9844b2e, type: 3}
+  - {fileID: 2326879479457550525, guid: 5c8ead43ebe54074fb17405f9e74bff8, type: 3}

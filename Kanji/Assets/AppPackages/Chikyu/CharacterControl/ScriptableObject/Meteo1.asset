@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ca3c9e089cbb8409d65aeebad570e1, type: 3}
+  m_Name: Meteo1
+  m_EditorClassIdentifier: Assembly-CSharp::CaracterData
+  CharacterPrefab: {fileID: 8777403512173699791, guid: fdc4294050eda1043af04ab7ff0499fa, type: 3}
+  Id: 1
+  Atk: 100
+  Speed: 0.02
+  CreateTimeSpan: 5

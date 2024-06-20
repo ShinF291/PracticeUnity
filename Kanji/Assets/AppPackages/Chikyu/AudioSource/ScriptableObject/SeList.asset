@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd3b4897ad2e6c94a82dceebda2aae08, type: 3}
+  m_Name: SeList
+  m_EditorClassIdentifier: 
+  _StartWhistle: {fileID: 8300000, guid: 73b29cde381a41f45801cc3285b01240, type: 3}
+  _EndWhistle: {fileID: 8300000, guid: ca6320ef9d543724eb7c5565545e98ed, type: 3}
+  _Explosion: {fileID: 8300000, guid: 65538911f6c7bc442a24c4396a4cdabe, type: 3}
+  _Explosion2: {fileID: 8300000, guid: af11a73ec318bcf47b30a1cdfcfb8158, type: 3}
+  _UfoGet: {fileID: 8300000, guid: fffe548933f5eba4b9ad7691cfd8159c, type: 3}
+  _OnSatellite: {fileID: 8300000, guid: 06f9494b8ff2a5848ae51cafcb53017a, type: 3}
+  _SatelliteDestroy: {fileID: 8300000, guid: 0b7a133e4a39b4a4ca4a54c7347a2391, type: 3}
