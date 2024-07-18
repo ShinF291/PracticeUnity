@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System;
 using Zenject;
+using UnityEngine.Events;
 
 namespace RaMen.Guzai
 {
@@ -13,40 +14,51 @@ namespace RaMen.Guzai
         private DiContainer _DiContainer;
 
         private RectTransform _DropArea = null;
-        private bool _MoveCopyObj = true;
+        public bool FirstObj = true;
         private GameObject _CopyObj = null;
 
         private readonly int ARRAY_LENGTH = 4;
         private readonly float ZERO_POSITION = 0;
+        private UnityAction _AddAction;
+        private UnityAction _DelAction;
+
+        public bool UsersObj = true;
+        public bool UnlockObj = false;
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            if (_MoveCopyObj)
+            if (FirstObj && UsersObj && UnlockObj)
             {
                 GameObject target = eventData.pointerDrag;
                 _CopyObj = CopyObj(target);
-                _MoveCopyObj = false;
+                this._AddAction.Invoke();
+                FirstObj = false;
             }
         }
 
         public void OnDrag(PointerEventData eventData)
         {
-            Vector3 vec = Camera.main.WorldToScreenPoint(transform.position);
-            vec.x += eventData.delta.x;
-            vec.y += eventData.delta.y;
-            transform.position = Camera.main.ScreenToWorldPoint(vec);
+            if (UsersObj)
+            {
+                Vector3 vec = Camera.main.WorldToScreenPoint(transform.position);
+                vec.x += eventData.delta.x;
+                vec.y += eventData.delta.y;
+                transform.position = Camera.main.ScreenToWorldPoint(vec);
+            }
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            bool isSuccess = false;
-            if (Contains(_DropArea, eventData)) ///
+            if (UsersObj)
             {
-                isSuccess = true;
+                if (Contains(_DropArea, eventData))
+                {
+                    
+
+                }else{ 
+                    DestroyCopy(); 
+                }
             }
-            
-            // 指定領域外
-            if (!isSuccess) DestroyMe();
 
         }
 
@@ -55,13 +67,29 @@ namespace RaMen.Guzai
             _DropArea = dropArea;
         }
 
+        public void SetAction(UnityAction addAction, UnityAction delAction)
+        {
+            _AddAction = addAction;
+            _DelAction = delAction;
+        }
+
         public void DestroyCopy()
         {
-            if (_MoveCopyObj)
+            if (!FirstObj && UsersObj)
+            {
+                this._DelAction.Invoke();
+                DestroyMe();
+            }
+        }
+
+        public void DestroyAnswer()
+        {
+            if (!UsersObj)
             {
                 DestroyMe();
             }
         }
+
 
         public void DestroyMe()
         {
@@ -108,7 +136,16 @@ namespace RaMen.Guzai
 
             ret.transform.position = source.transform.position;
             ret.transform.localScale = source.transform.localScale;
+            ret.GetComponent<GuzaiView>().UnlockObj = true;
+            ret.GetComponent<GuzaiView>().SetDropArea(_DropArea);
+            ret.GetComponent<GuzaiView>().SetAction(_AddAction, _DelAction);
             return ret;
+        }
+
+        public void InitAnswerGuzai()
+        {
+            UsersObj = false;
+            FirstObj = false;
         }
 
     }

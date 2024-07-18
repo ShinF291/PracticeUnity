@@ -4,6 +4,7 @@ using UnityEngine;
 using UniRx;
 using Zenject;
 using Appdata;
+using UnityEngine.UI;
 
 public class TapSceneController : MonoBehaviour
 {

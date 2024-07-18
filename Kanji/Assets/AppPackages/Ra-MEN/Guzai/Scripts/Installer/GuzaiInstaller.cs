@@ -8,6 +8,7 @@ namespace RaMen.Guzai
         public override void InstallBindings()
         {
             Container.Bind<GuzaiMessageBroker>().AsSingle();
+            Container.Bind<GuzaiModel>().AsSingle();
             
         }
     }

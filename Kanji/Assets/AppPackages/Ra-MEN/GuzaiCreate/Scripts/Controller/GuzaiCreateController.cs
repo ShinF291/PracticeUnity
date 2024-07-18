@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 using UniRx;
+using RaMen.Guzai;
 
 namespace RaMen.GuzaiCreate
 {

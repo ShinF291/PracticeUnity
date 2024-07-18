@@ -8,12 +8,15 @@ namespace Appdata
     public class AppData
     {
         public SceneList NextScene = 0 ;
+
+        public int StageNumber = 0 ;
         
     }
 
     public enum SceneList
     {
         Stage_1_Scene,
+        RaMEN,
     }
     
 }

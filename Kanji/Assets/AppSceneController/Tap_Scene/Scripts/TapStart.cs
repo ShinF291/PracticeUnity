@@ -12,6 +12,9 @@ using Appdata;
 public class TapStart : MonoBehaviour
 {
     [SerializeField]
+    private Text _StageSelectText = null;
+    
+    [SerializeField]
     Text timerText;
 
     [SerializeField]
@@ -88,5 +91,23 @@ public class TapStart : MonoBehaviour
    {
         Ring.DORewind();
    }
+
+   public void OnClickNumber0()
+    {
+        _AppData.StageNumber = 0;
+        _StageSelectText.text = "１";
+    }
+
+    public void OnClickNumber1()
+    {
+        _AppData.StageNumber = 1;
+        _StageSelectText.text = "２";
+    }
+
+    public void OnClickNumber2()
+    {
+        _AppData.StageNumber = 2;
+        _StageSelectText.text = "３";
+    }
 
 }

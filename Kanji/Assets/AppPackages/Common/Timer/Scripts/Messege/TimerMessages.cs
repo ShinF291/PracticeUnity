@@ -6,6 +6,12 @@ namespace Common.Timer
 {
     public class TimerStartRequest : ITimerMessage
     {
+        public int Time; 
+
+        public TimerStartRequest(int time = 30)
+        {
+            Time = time;
+        }
 
     }
 

@@ -12,15 +12,30 @@ namespace RaMen.Guzai
         [Inject]
         private GuzaiMessageBroker _GuzaiMessageBroker;
 
+        [Inject]
+        private GuzaiModel _GuzaiModel;
+
         [SerializeField]
         private GuzaiView _GuzaiView;
+
+        [SerializeField]
+        private int _GuzaiId;
 
         void Awake()
         {
             _GuzaiMessageBroker.Receive<InitGuzai>()
             .Subscribe(_=>{
-                Debug.Log("_.DropArea"+_.DropArea);
                 _GuzaiView.SetDropArea(_.DropArea);
+                _GuzaiView.SetAction(AddCountGuzai, DelCountGuzai);
+            })
+            .AddTo(this);
+
+            _GuzaiMessageBroker.Receive<GetGuzaiDataRequest>()
+            .Subscribe(_=>{
+                if(!_GuzaiView.FirstObj)
+                {
+                    _GuzaiMessageBroker.Publish(new GetGuzaiDataResponse(this.transform, _GuzaiId, _GuzaiView.UsersObj, _GuzaiModel.MoveObjCount));
+                }
             })
             .AddTo(this);
 
@@ -30,11 +45,39 @@ namespace RaMen.Guzai
             })
             .AddTo(this);
 
+            _GuzaiMessageBroker.Receive<GuzaiResetAnswerRequest>()
+            .Subscribe(_=>{
+                _GuzaiView.DestroyAnswer();
+            })
+            .AddTo(this);
+
             _GuzaiMessageBroker.Receive<AllGuzaiResetRequest>()
             .Subscribe(_=>{
                 _GuzaiView.DestroyMe();
             })
             .AddTo(this);
+
+            _GuzaiMessageBroker.Receive<GuzaiForbiddenTouchRequest>()
+            .Subscribe(_=>{
+                _GuzaiView.UnlockObj = false;
+            })
+            .AddTo(this);
+
+            _GuzaiMessageBroker.Receive<GuzaiUnlockedTouchRequest>()
+            .Subscribe(_=>{
+                _GuzaiView.UnlockObj = true;
+            })
+            .AddTo(this);
+        }
+
+        private void AddCountGuzai()
+        {
+            _GuzaiModel.MoveObjCount++;
+        }
+
+        private void DelCountGuzai()
+        {
+            _GuzaiModel.MoveObjCount--;
         }
     }
 }

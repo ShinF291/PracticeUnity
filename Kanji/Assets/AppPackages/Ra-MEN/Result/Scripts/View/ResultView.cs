@@ -4,11 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 using UniRx;
+using UnityEngine.SceneManagement;
+using Common.SoundManager;
 
 namespace RaMen.Result
 {
     public class ResultView : MonoBehaviour
     {
+        [Inject]
+        private SoundManager _SoundManager;
+
         [SerializeField]
         private Button _RestartButton;
 
@@ -33,7 +38,7 @@ namespace RaMen.Result
             .Subscribe(_ =>
             {
                 _RestartButton.interactable = false;
-                // ChangeToTapScene();
+                ChangeToTapScene();
 
             })
             .AddTo(this);
@@ -44,10 +49,11 @@ namespace RaMen.Result
             _ResultPanel.gameObject.SetActive (true);
         }
 
-        // public void ChangeToTapScene()
-        // {
-        //     SceneManager.LoadScene(SCENE_TO_TAP_SCENE);
-        // }
+        public void ChangeToTapScene()
+        {
+            _SoundManager.StopBgm();
+            SceneManager.LoadScene("RaMEN");
+        }
 
         public void ScoreTextUpdate(int score, int highScore)
         {

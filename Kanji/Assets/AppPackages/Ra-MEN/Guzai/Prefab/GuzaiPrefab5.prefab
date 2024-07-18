@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _GuzaiView: {fileID: 2326879479457550465}
+  _GuzaiId: 5
 --- !u!114 &2326879479457550465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c77b910244132141af07369f0e5931d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _DropArea: {fileID: 0}
+  UsersObj: 1
 --- !u!222 &2326879479457550464
 CanvasRenderer:
   m_ObjectHideFlags: 0

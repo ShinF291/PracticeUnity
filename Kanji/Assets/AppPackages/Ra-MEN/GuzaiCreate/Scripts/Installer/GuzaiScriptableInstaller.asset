@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9c36a101f47130449311651f4a5b012, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e25df9bed759304cb2056b86b55e430, type: 3}
   m_Name: GuzaiScriptableInstaller
   m_EditorClassIdentifier: 
   _UseGuzaiList: {fileID: 11400000, guid: c1c19b9902070b04084bbdda6424ac65, type: 2}

@@ -10,10 +10,6 @@ namespace Common.Timer
 {
     public class TimerController : MonoBehaviour
     {
-
-        [SerializeField]
-        private float _TimerTime;
-
         [SerializeField]
         private TimerView _TimerView;
 
@@ -28,7 +24,7 @@ namespace Common.Timer
         void Awake()
         {
             _TimerMessageBroker.Receive<TimerStartRequest>()
-            .Subscribe(_=>{this.StartTimer();})
+            .Subscribe(_=>{this.StartTimer(_.Time);})
             .AddTo(this);
 
             _TimerMessageBroker.Receive<TimerStopRequest>()
@@ -55,10 +51,10 @@ namespace Common.Timer
                 .AddTo(this);
         }
 
-        public void StartTimer()
+        public void StartTimer(int time)
         {
             Debug.Log("タイマー スタート！");
-            _TimerCoroutine = StartCoroutine(_TimerModel.TimerCountDown(_TimerTime));
+            _TimerCoroutine = StartCoroutine(_TimerModel.TimerCountDown(time));
         }
         
 

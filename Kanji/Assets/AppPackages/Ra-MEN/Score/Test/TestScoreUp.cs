@@ -7,22 +7,22 @@ using Zenject;
 
 namespace RaMen.Score.Test
 {
-public class TestScoreUp : MonoBehaviour
-{
-    [SerializeField]
-    private Button _ScoreUpButton;
-
-    [Inject]
-    private ScoreMessageBroker _ScoreMessageBroker;
-
-    void Awake()
+    public class TestScoreUp : MonoBehaviour
     {
-        _ScoreUpButton.OnClickAsObservable()
-        .Subscribe(_ =>
+        [SerializeField]
+        private Button _ScoreUpButton;
+
+        [Inject]
+        private ScoreMessageBroker _ScoreMessageBroker;
+
+        void Awake()
         {
-            _ScoreMessageBroker.Publish(new ScoreUPRequest());
-        })
-        .AddTo(this);
+            _ScoreUpButton.OnClickAsObservable()
+            .Subscribe(_ =>
+            {
+                _ScoreMessageBroker.Publish(new ScoreUPRequest());
+            })
+            .AddTo(this);
+        }
     }
-}
 }
