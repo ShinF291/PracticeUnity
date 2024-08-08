@@ -24,13 +24,15 @@ namespace RaMen.QuestionAnswer
         [SerializeField]
         public Transform AnswerRelativePoint;
 
+        private GameObject _Obj;
+
         public GameObject CreateQuestionAnswerGuzaiPrefab(GameObject guzai, Vector3 createPosition)
         {
-            GameObject ret =  _DiContainer.InstantiatePrefab(guzai, _CreateParent);
+            _Obj = _DiContainer.InstantiatePrefab(guzai, _CreateParent);
 
-            ret.transform.position = createPosition;
-            ret.transform.localScale = guzai.transform.localScale;
-            return ret;
+            _Obj.transform.position = createPosition;
+            _Obj.transform.localScale = guzai.transform.localScale;
+            return _Obj;
         }
 
     }

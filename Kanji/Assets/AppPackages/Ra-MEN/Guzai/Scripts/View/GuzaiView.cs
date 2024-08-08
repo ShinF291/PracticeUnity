@@ -22,15 +22,23 @@ namespace RaMen.Guzai
         private UnityAction _AddAction;
         private UnityAction _DelAction;
 
+        private Vector3[] _Corners = null;
+        private Vector3 _Min;
+        private Vector3 _Max;
+        private Vector3 _ScreenPoint;
+
+        private Bounds _SelfBounds;
+        private Vector3 _WorldPos;
+
         public bool UsersObj = true;
         public bool UnlockObj = false;
+        
 
         public void OnBeginDrag(PointerEventData eventData)
         {
             if (this.CanDragObj())
             {
-                GameObject target = eventData.pointerDrag;
-                _CopyObj = CopyObj(target);
+                _CopyObj = CopyObj(eventData.pointerDrag);
                 this._AddAction.Invoke();
                 FirstObj = false;
             }
@@ -40,10 +48,10 @@ namespace RaMen.Guzai
         {
             if (UsersObj)
             {
-                Vector3 vec = Camera.main.WorldToScreenPoint(transform.position);
-                vec.x += eventData.delta.x;
-                vec.y += eventData.delta.y;
-                transform.position = Camera.main.ScreenToWorldPoint(vec);
+                _ScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
+                _ScreenPoint.x += eventData.delta.x;
+                _ScreenPoint.y += eventData.delta.y;
+                transform.position = Camera.main.ScreenToWorldPoint(_ScreenPoint);
             }
         }
 
@@ -99,15 +107,17 @@ namespace RaMen.Guzai
         // targetがareaの範囲内にいるかどうかを判定する
         private bool Contains(RectTransform area, PointerEventData target)
         {
-            var selfBounds = GetBounds(area);
-            var worldPos = Vector3.zero;
+            _SelfBounds = GetBounds(area);
+
             RectTransformUtility.ScreenPointToWorldPointInRectangle(
                 area,
                 target.position,
                 target.pressEventCamera,
-                out worldPos);
-            worldPos.z = ZERO_POSITION;
-            return selfBounds.Contains(worldPos);
+                out _WorldPos);
+
+            _WorldPos.z = ZERO_POSITION;
+
+            return _SelfBounds.Contains(_WorldPos);
         }
 
         private bool CanDragObj()
@@ -118,21 +128,21 @@ namespace RaMen.Guzai
 
         private Bounds GetBounds(RectTransform target)
         {
-            Vector3[] Corners = new Vector3[ARRAY_LENGTH];
-            var min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
-            var max = new Vector3(float.MinValue, float.MinValue, float.MinValue);
-            target.GetWorldCorners(Corners);
+            _Corners = new Vector3[ARRAY_LENGTH];
+            _Min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
+            _Max = new Vector3(float.MinValue, float.MinValue, float.MinValue);
+            target.GetWorldCorners(_Corners);
             for (var index = 0; index < ARRAY_LENGTH; ++index)
             {
-                min = Vector3.Min(Corners[index], min);
-                max = Vector3.Max(Corners[index], max);
+                _Min = Vector3.Min(_Corners[index], _Min);
+                _Max = Vector3.Max(_Corners[index], _Max);
             }
 
-            max.z = ZERO_POSITION;
-            min.z = ZERO_POSITION;
+            _Max.z = ZERO_POSITION;
+            _Min.z = ZERO_POSITION;
 
-            Bounds bounds = new Bounds(min, Vector3.zero);
-            bounds.Encapsulate(max);
+            Bounds bounds = new Bounds(_Min, Vector3.zero);
+            bounds.Encapsulate(_Max);
             return bounds;
         }
 

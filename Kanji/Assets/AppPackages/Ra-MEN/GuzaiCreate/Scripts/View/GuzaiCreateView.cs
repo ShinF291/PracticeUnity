@@ -18,13 +18,15 @@ namespace RaMen.GuzaiCreate
         [SerializeField]
         private Transform _CreateParent;
 
+        private GameObject _Obj;
+
         public GameObject CreateGuzaiPrefab(GameObject guzaiPrefab, Transform createPosition)
         {
-            GameObject ret =  _DiContainer.InstantiatePrefab(guzaiPrefab, _CreateParent);
+            _Obj = _DiContainer.InstantiatePrefab(guzaiPrefab, _CreateParent);
 
-            ret.transform.position = createPosition.position;
-            ret.transform.localScale = guzaiPrefab.transform.localScale;
-            return ret;
+            _Obj.transform.position = createPosition.position;
+            _Obj.transform.localScale = guzaiPrefab.transform.localScale;
+            return _Obj;
         }
 
     }
