@@ -150,11 +150,13 @@ namespace RaMen.Guzai
         {
             GameObject ret = _DiContainer.InstantiatePrefab(source, source.transform.parent);
 
+            GuzaiView guzaiView = ret.GetComponent<GuzaiView>();
+
             ret.transform.position = source.transform.position;
             ret.transform.localScale = source.transform.localScale;
-            ret.GetComponent<GuzaiView>().UnlockObj = true;
-            ret.GetComponent<GuzaiView>().SetDropArea(_DropArea);
-            ret.GetComponent<GuzaiView>().SetAction(_AddAction, _DelAction);
+            guzaiView.UnlockObj = true;
+            guzaiView.SetDropArea(_DropArea);
+            guzaiView.SetAction(_AddAction, _DelAction);
             return ret;
         }
 
