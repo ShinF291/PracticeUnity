@@ -20,13 +20,12 @@ namespace RaMen.GuzaiCreate
 
         private GameObject _Obj;
 
-        public GameObject CreateGuzaiPrefab(GameObject guzaiPrefab, Transform createPosition)
+        public void CreateGuzaiPrefab(GameObject guzaiPrefab, Transform createPosition)
         {
             _Obj = _DiContainer.InstantiatePrefab(guzaiPrefab, _CreateParent);
 
             _Obj.transform.position = createPosition.position;
             _Obj.transform.localScale = guzaiPrefab.transform.localScale;
-            return _Obj;
         }
 
     }
