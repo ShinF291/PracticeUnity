@@ -27,7 +27,7 @@ namespace RaMen.Guzai
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            if (FirstObj && UsersObj && UnlockObj)
+            if (this.CanDragObj())
             {
                 GameObject target = eventData.pointerDrag;
                 _CopyObj = CopyObj(target);
@@ -109,6 +109,12 @@ namespace RaMen.Guzai
             worldPos.z = ZERO_POSITION;
             return selfBounds.Contains(worldPos);
         }
+
+        private bool CanDragObj()
+        {
+            return FirstObj && UsersObj && UnlockObj;
+        }
+        
 
         private Bounds GetBounds(RectTransform target)
         {
