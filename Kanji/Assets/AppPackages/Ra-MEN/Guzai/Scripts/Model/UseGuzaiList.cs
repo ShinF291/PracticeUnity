@@ -7,7 +7,7 @@ namespace RaMen.Guzai
     [CreateAssetMenu(menuName = "ScriptableObject/Create UseGuzaiList")]
     public class UseGuzaiList : ScriptableObject 
     {
-        public List<GameObject> UseGuzaiPrehab;
+        public List<GuzaiView> UseGuzaiPrehab;
     }
 
 }

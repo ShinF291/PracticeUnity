@@ -31,7 +31,7 @@ namespace RaMen.GuzaiCreate
                 {
                     Debug.Log("guzai : "+guzai);
                     Debug.Log(value+"_CreatePosition : "+_CreatePosition[value]);
-                    _GuzaCreateiView.CreateGuzaiPrefab(guzai, _CreatePosition[value]);
+                    _GuzaCreateiView.CreateGuzaiPrefab(guzai.gameObject, _CreatePosition[value]);
                     value++;
                 }
 
