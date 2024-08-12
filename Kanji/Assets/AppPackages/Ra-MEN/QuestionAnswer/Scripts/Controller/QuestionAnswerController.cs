@@ -19,6 +19,9 @@ namespace RaMen.QuestionAnswer
         [SerializeField]
         private QuestionAnswerView _QuestionAnswerView;
 
+        [SerializeField]
+        private List<Transform> _CreateParent;
+
         private readonly int ARRAY_LENGTH = 4;
 
         void Awake()
@@ -33,7 +36,7 @@ namespace RaMen.QuestionAnswer
                     float x = Random.Range(Corners[0].x, Corners[2].x);
                     float y = Random.Range(Corners[0].y, Corners[2].y);
                     int guzai = Random.Range(0, _UseGuzaiList.UseGuzaiPrehab.Count);
-                    _QuestionAnswerView.CreateQuestionAnswerGuzaiPrefab(_UseGuzaiList.UseGuzaiPrehab[guzai].gameObject, new Vector3(x,y,0))
+                    _QuestionAnswerView.CreateQuestionAnswerGuzaiPrefab(_UseGuzaiList.UseGuzaiPrehab[guzai].gameObject, new Vector3(x,y,0), _CreateParent[guzai])
                     .GetComponent<GuzaiView>().InitAnswerGuzai();
                 }
 
