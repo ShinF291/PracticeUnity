@@ -18,8 +18,6 @@ namespace MamoriOfChikyu.Stage1Create
 
         private GameObject _SatelliteClone;
 
-        private readonly Vector3 _InitVector = Vector3.zero;
-
         private readonly Vector3 _SatelliteVector = new Vector3(100, -10, 0);
 
         private RectTransform _RectTransform;

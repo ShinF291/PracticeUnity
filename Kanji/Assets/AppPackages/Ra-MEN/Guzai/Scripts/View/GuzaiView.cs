@@ -17,8 +17,8 @@ namespace RaMen.Guzai
         public bool FirstObj = true;
         private GameObject _CopyObj = null;
 
-        private readonly int ARRAY_LENGTH = 4;
-        private readonly float ZERO_POSITION = 0;
+        private const int ARRAY_LENGTH = 4;
+        private const float ZERO_POSITION = 0;
         private UnityAction _AddAction;
         private UnityAction _DelAction;
 

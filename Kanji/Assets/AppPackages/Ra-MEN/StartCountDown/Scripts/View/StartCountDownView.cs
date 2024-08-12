@@ -17,7 +17,7 @@ namespace RaMen.StartCountDown
         [SerializeField]
         private List<Sprite> _StartCountDownSpriteList;
 
-        private readonly int ANIMATION_INTERVAL = 1;
+        private const int ANIMATION_INTERVAL = 1;
 
         public Sequence CountDownAnimation()
         {

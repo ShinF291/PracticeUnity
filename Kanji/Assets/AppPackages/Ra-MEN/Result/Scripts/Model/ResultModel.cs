@@ -9,9 +9,9 @@ namespace RaMen.Result
     {
         private int _HighScore = 0;
 
-        private readonly string SAVE_KEY = "RamenHighScore";
+        private const string SAVE_KEY = "RamenHighScore";
 
-        private readonly int DEFAULT_HIGH_SCORE = 0;
+        private const int DEFAULT_HIGH_SCORE = 0;
 
         void Awake()
         {

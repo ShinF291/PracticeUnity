@@ -12,7 +12,7 @@ namespace RaMen.Score
 
         ReactiveProperty<int> _RamenScore = new ReactiveProperty<int>();
 
-        private readonly int INIT_SCORE = 0;
+        private const int INIT_SCORE = 0;
         
         public void Init()
         {

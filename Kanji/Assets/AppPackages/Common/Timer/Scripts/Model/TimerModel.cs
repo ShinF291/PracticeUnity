@@ -9,9 +9,9 @@ namespace Common.Timer
     {
        public ReactiveProperty<float> _TimerProperty = new ReactiveProperty<float>();
 
-       private readonly float TIME_FINISH = 0;
+       private const float TIME_FINISH = 0;
 
-       private readonly float SECOND_STANDARD = 1.0f;
+       private const float SECOND_STANDARD = 1.0f;
 
        public IEnumerator TimerCountDown(float timerTime)
         {

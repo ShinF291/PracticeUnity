@@ -29,7 +29,7 @@ namespace MamoriOfChikyu.Meteo
 
         private UnityAction<int> _ChikyuHitAction;
 
-        private readonly int VECTOR_Z_ZERO = 0;
+        private const int VECTOR_Z_ZERO = 0;
 
         void Awake()
         {

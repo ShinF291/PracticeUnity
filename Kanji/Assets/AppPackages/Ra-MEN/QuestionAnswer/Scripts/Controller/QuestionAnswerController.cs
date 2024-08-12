@@ -22,7 +22,7 @@ namespace RaMen.QuestionAnswer
         [SerializeField]
         private List<Transform> _CreateParent;
 
-        private readonly int ARRAY_LENGTH = 4;
+        private const int ARRAY_LENGTH = 4;
 
         void Awake()
         {

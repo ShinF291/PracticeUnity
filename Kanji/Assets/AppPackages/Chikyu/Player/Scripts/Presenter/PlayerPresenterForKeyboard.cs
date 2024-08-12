@@ -17,9 +17,9 @@ namespace MamoriOfChikyu.Player
         [SerializeField]
         private PlayerView _PlayerView;
 
-        private readonly int MOUSE_BUTTON_LEFT = 0;
-        private readonly int MOUSE_BUTTON_RIGHT = 1;
-        private readonly int MOUSE_BUTTON_MIDDLE = 2;
+        private const int MOUSE_BUTTON_LEFT = 0;
+        private const int MOUSE_BUTTON_RIGHT = 1;
+        private const int MOUSE_BUTTON_MIDDLE = 2;
 
         void Awake()
         {
