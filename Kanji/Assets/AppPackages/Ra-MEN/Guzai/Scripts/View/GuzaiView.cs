@@ -129,8 +129,8 @@ namespace RaMen.Guzai
         private Bounds GetBounds(RectTransform target)
         {
             _Corners = new Vector3[ARRAY_LENGTH];
-            _Min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
-            _Max = new Vector3(float.MinValue, float.MinValue, float.MinValue);
+            _Min = Vector3.zero;
+            _Max = Vector3.zero;
             target.GetWorldCorners(_Corners);
             for (var index = 0; index < ARRAY_LENGTH; ++index)
             {
